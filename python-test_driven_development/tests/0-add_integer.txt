@@ -1,8 +1,6 @@
-'Test for 0-add_integer module'
-
-'Funtion to test:   add_integer()'
-
->>> add_integer = __import__('0-add_integer').add_integer
+DocTest for 0-add_integer
+Function: add_integer()
+    >>> add_integer = __import__('0-add_integer').add_integer
 
 'positive integer values'
 >>> add_integer(1, 23)
