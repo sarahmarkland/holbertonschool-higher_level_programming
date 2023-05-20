@@ -44,3 +44,34 @@ TypeError: matrix must be a matrix (list of lists) of integers/floats
 Traceback (most recent call last):
     ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Example 8: Matrix with invalid format (string passed in)
+>>> matrix_divided([["a", 2, 3], ["b", 4, 5]], 6)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Example 9: Matrix division with divisor as a string
+>>> matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> matrix_divided(matrix, "2")
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
+
+# Example 10: Matrix division with divisor as positive infinity
+>>> matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> matrix_divided(matrix, float('inf'))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+# Example 11: Missing one argument
+>>> matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> matrix_divided(matrix)
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+>>> # Example 12: Missing two arguments
+>>> matrix_divided()
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 2 required positional argument: 'matrix', 'div'
