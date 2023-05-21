@@ -75,3 +75,57 @@ TypeError: matrix_divided() missing 1 required positional argument: 'div'
 Traceback (most recent call last):
     ...
 TypeError: matrix_divided() missing 2 required positional argument: 'matrix', 'div'
+
+Testing a functioning input with all integers
+    >>> matrix_divided([[2, 4, 6], [8, 10, 12]], 2)
+    [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+
+Testing that output is rounded to two decimal places
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+Testing a functioning input with mix of integers and floats
+    >>> matrix_divided([[5, 7.5], [10, 8.25]], 5)
+    [[1.0, 1.5], [2.0, 1.65]]
+
+Testing when string is passed in a matrix
+>>> matrix_divided([["a", 2, 3], ["b", 4, 5]], 6)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Testing that each row of the matrix is the same length
+    >>> matrix_divided([[1, 2, 3], [4, 5], [7, 8, 9]], 1)
+    Traceback (most recent call last):
+        ... 
+    TypeError: Each row of the matrix must have the same size
+
+Testing that divisor is an integer or float
+    >>> matrix_divided([[3, 6, 9], [12, 15, 18]], "c")
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+
+Testing that divisor is not zero
+    >>> matrix_divided([[10, 20],[30, 40]], 0)
+    Traceback (most recent call last):
+        ...
+    ZeroDivisionError: division by zero
+
+Testing if no divisor is passed
+    >>> matrix_divided([[1, 2, 3],[4, 5, 6]])
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'
+    
+Testing if no matrix is passed
+    >>> matrix_divided(, 4)
+    Traceback (most recent call last):
+        ...
+    SyntaxError: invalid syntax
+
+Testing if None is passed as matrix
+    >>> matrix_divided(None, 1)
+    Traceback (most recent call last):
+        ...
+    TypeError: 'NoneType' object is not subscriptable
