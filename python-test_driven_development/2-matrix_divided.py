@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """1. Matrix Divided - 2-matrix_divided.py"""
 
+
 def matrix_divided(matrix, div):
     '''
     Function that divides all elements of matrix
@@ -24,7 +25,8 @@ def matrix_divided(matrix, div):
     for row in matrix:
         for num in row:
             if type(num) is not int and type(num) is not float:
-                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+                raise TypeError("matrix must be a matrix (list of lists) of integers/floats"/
+)
 
     row_size = len(matrix[0])
     if any(len(row) != row_size for row in matrix):
