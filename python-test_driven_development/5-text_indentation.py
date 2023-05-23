@@ -2,7 +2,7 @@
 """4. Text indentation - 5-text_indentation.py"""
 
 
-def test_indentation(text):
+def text_indentation(text):
     """
     This function prints a text w/ 2 new lines\
         after each: '.' '?' or ':'
