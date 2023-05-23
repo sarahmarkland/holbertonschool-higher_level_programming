@@ -1,18 +1,51 @@
 #!/usr/bin/python3
-"""Module to find the max integer in a list
+"""Unittest for max_integer([..])
 """
+import unittest
+max_integer = __import__('6-max_integer').max_integer
 
 
-def max_integer(list=[]):
-    """Function to find and return the max integer in a list of integers
-        If the list is empty, the function returns None
+class TestMaxInteger(unittest.TestCase):
     """
-    if len(list) == 0:
-        return None
-    result = list[0]
-    i = 1
-    while i < len(list):
-        if list[i] > result:
-            result = list[i]
-        i += 1
-    return result
+    Class for testing max_integer function
+    """
+    def test_max_integer(self):
+        """Positive ints"""
+        test_list = [32, 5, 6, 12, 1, 17, 99]
+        self.assertEqual(max_integer(test_list), 99)
+
+
+    def test_max_at_beginning(self):
+        """Positive ints with max at beginning"""
+        test_list = [99, 1, 6, 2, 88, 33]
+        self.assertEqual(max_integer(test_list), 99)
+
+
+    def test_max_in_middle(self):
+        """Positive ints with max in middle"""
+        test_list = [5, 99, 1]
+        self.assertEqual(max_integer(test_list), 99)
+
+
+    def test_one_negative_number(self):
+        """One negative number"""
+        test_list = [1, 5, 99, -12, 55]
+        self.assertEqual(max_integer(test_list), 99)
+
+
+    def test_only_negative_numbers(self):
+        """Only negative numbers"""
+        test_list = [-99, -12, -55, -2, -9]
+        self.assertEqual(max_integer(test_list), -2)
+
+
+    def test_only_one_element(self):
+        """Only one element"""
+        test_list = [99]
+        self.assertEqual(max_integer(test_list), 99)
+
+
+    def test_empty_list(self):
+        """Empty list"""
+        test_list = []
+        self.assertEqual(max_integer(test_list), None)
