@@ -16,11 +16,16 @@ def test_indentation(text):
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    new_text = ""
-    for i in range(len(text)):
-        if text[i] == '.' or text[i] == '?' or text[i] == ':':
-            new_text += text[i]
-            new_text += "\n\n"
-        else:
-            new_text += text[i]
-    print(new_text, end="")
+    new_text = True
+
+    for char in text:
+        if char != ' ' or new_line is False:
+            print(char, end='')
+            new_line = False
+        elif char != ' ':
+            new_line = False
+
+        if char in ['.', '?', ':']:
+            print()
+            print()
+            new_line = True
