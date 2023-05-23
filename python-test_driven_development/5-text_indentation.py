@@ -3,29 +3,26 @@
 
 
 def test_indentation(text):
-    """test_indentation: function that prints a text with 2 new lines after
-    each of these characters: ., ? and :
+    """
+    This function prints a text w/ 2 new lines\
+        after each: '.' '?' or ':'
+
     Args:
-        text (str): text to print
-    Returns:
-        nothing
+        text: text to use
+
     Raises:
-        TypeError: if text is not a string
-    Doctest Examples:
-        see dir: /tests/5-text_indentation.txt
+        TypeError if text not a string
+
+    Return:
+        No return only print
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    new_text = True
-
-    for char in text:
-        if char != ' ' or new_line is False:
-            print(char, end='')
-            new_line = False
-        elif char != ' ':
-            new_line = False
-
-        if char in ['.', '?', ':']:
-            print()
-            print()
-            new_line = True
+    new_text = ""
+    for i in range(len(text)):
+        if text[i] == '.' or text[i] == '?' or text[i] == ':':
+            new_text += text[i]
+            new_text += "\n\n"
+        else:
+            new_text += text[i]
+    print(new_text, end="")
