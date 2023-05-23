@@ -1,0 +1,25 @@
+DocTest for 3-say_my_name
+Function: say_my_name
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Test for 2 strings
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+Test for string, not-string
+>>> say_my_name("John", 99)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+Test for not-string, string
+>>> say_my_name(1, "Smith")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+Test for missing 2 arguments
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
