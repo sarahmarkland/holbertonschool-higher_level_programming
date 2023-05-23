@@ -3,9 +3,11 @@
 Class Rectangle that defines a rectangle by: (based on 1-rectangle.py)
     Private instance attribute: width
     Private instance attribute: height
-    Instantiation with optional width and height: def __init__(self, width=0, height=0):
+    Instantiation with optional width and height: def __init__
+    (self, width=0, height=0):
     Public instance method: def area(self): that returns the rectangle area
-    Public instance method: def perimeter(self): that returns the rectangle perimeter:
+    Public instance method: def perimeter(self): that returns the 
+    rectangle perimeter:
         if width or height is equal to 0, perimeter is equal to 0
 """
 
@@ -48,7 +50,7 @@ class Rectangle:
 
     def area(self):
         return self.width * self.height
-    
+
     def perimeter(self):
         if self.width == 0 or self.height == 0:
             return 0
