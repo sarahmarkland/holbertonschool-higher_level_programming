@@ -6,7 +6,7 @@ Class Rectangle that defines a rectangle by: (based on 1-rectangle.py)
     Instantiation with optional width and height: def __init__
     (self, width=0, height=0):
     Public instance method: def area(self): that returns the rectangle area
-    Public instance method: def perimeter(self): that returns the 
+    Public instance method: def perimeter(self): that returns the
     rectangle perimeter:
         if width or height is equal to 0, perimeter is equal to 0
 """
