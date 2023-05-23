@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""3. Print square - Write a function that prints a square with the character #."""
+"""3. Print square - Write a func that prints a square with #."""
 
 
 def print_square(size):
