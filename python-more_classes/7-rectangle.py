@@ -17,7 +17,9 @@ Class Rectangle that defines a rectangle by:
     rectangle area
     Public instance method: def perimeter(self): that returns the
     rectangle perimeter:
-    print() and str() should print the rectangle with the char #:
+    If width or height is equal to 0, perimeter is equal to 0
+    print() and str() should print the rectangle with the character
+    stored in print_symbol:
         if width or height is equal to 0, return an empty string
     repr() should return a string representation of the rectangle
     to be able to recreate a new instance by using eval()
@@ -77,19 +79,17 @@ class Rectangle:
             return 0
 
     def __str__(self):
-        if self.width == 0 or self.height == 0:
-            return ""
-        else:
-            string = ""
+        string = ""
+        if self.width > 0 and self.height > 0:
             for i in range(self.height):
-                string += "#" * self.width
+                string += str(self.print_symbol) * self.width
                 if i < self.height - 1:
                     string += "\n"
-            return string
+        return string
 
     def __repr__(self):
         return "Rectangle({}, {})".format(self.width, self.height)
-
+        
     def __del__(self):
         print("Bye rectangle...")
         type(self).number_of_instances -= 1
