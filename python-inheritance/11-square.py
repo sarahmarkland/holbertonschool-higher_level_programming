@@ -14,15 +14,9 @@ class Square(Rectangle):
         """
         function __init__
         """
-        super().__init__(size, size)
+        self.integer_validator("size", size)
         self.__size = size
-        self.integer_validator("size", self.__size)
-
-    def area(self):
-        """
-        function area
-        """
-        return self.__size ** 2
+        super().__init__(size, size)
 
     def __str__(self):
         """
