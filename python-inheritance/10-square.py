@@ -4,21 +4,20 @@ module documentation
 """
 
 
-class BaseGeometry:
+class Square(__import__('9-rectangle').Rectangle):
     """
-    class BaseGeometry
+    class Square
     """
-    def area(self):
+    def __init__(self, size):
         """
-        function area
+        function __init__
         """
-        raise Exception("area() is not implemented")
+        self.integer_validator("size", size)
+        self.__size = size
+        super().__init__(size, size)
 
-    def integer_validator(self, name, value):
+    def __str__(self):
         """
-        function integer_validator
+        function __str__
         """
-        if not isinstance(value, int):
-            raise TypeError("{} must be an integer".format(name))
-        if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+        return "[Square] {}/{}".format(self.__size, self.__size)
