@@ -10,8 +10,8 @@ class Base:
     def __init__(self, id=None):
         if id is not None:
             """
-            Assign the public instance attribute id with the provided
-            argument
+            if a number is passed in as argument i.e. <Base(12)>
+            assign that number as the public instance attribute id
             """
             self.id = id
         else:
