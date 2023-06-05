@@ -78,7 +78,7 @@ class TestRectangle(unittest.TestCase):
         '''restore standard output'''
         sys.stdout = sys.__stdout__
 
-    def test_display(self):
+    def test_display1(self):
         '''create Rectangle instances with varying width/height and 
         compare output to expected result'''
         # Test case 1: Width = 4, Height = 5
@@ -86,11 +86,17 @@ class TestRectangle(unittest.TestCase):
         rectangle1.display()
         self.assertEqual(self.output.getvalue(), "####\n####\n####\n####\n####\n")
 
+    def test_display2(self):
+        '''create Rectangle instances with varying width/height and 
+        compare output to expected result'''
         # Test case 2: Width = 7, Height = 3
         rectangle2 = Rectangle(7, 3)
         rectangle2.display()
         self.assertEqual(self.output.getvalue(), "#######\n#######\n#######\n")
 
+    def test_display3(self):
+        '''create Rectangle instances with varying width/height and 
+        compare output to expected result'''
         # Test case 3: Width = 2, Height = 2
         rectangle3 = Rectangle(2, 2)
         rectangle3.display()
