@@ -1,7 +1,11 @@
+'''test_rectangle module'''
 import unittest
+import sys
+from io import StringIO
 from models.rectangle import Rectangle
 
 class TestRectangle(unittest.TestCase):
+    '''class docstring for TestRectangle'''
     def test_valid_attributes(self):
         '''test valid attribute values'''
         rectangle = Rectangle(10, 20, 5, 5)
@@ -49,6 +53,48 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             Rectangle(10, 20, 5, -5)
+
+    def test_area(self):
+        '''test if Rectangle instances calculate area properly '''
+        # Test case 1: Width = 4, Height = 5
+        rectangle1 = Rectangle(4, 5)
+        self.assertEqual(rectangle1.area(), 20)
+
+        # Test case 2: Width = 7, Height = 3
+        rectangle1 = Rectangle(7, 3)
+        self.assertEqual(rectangle1.area(), 21)
+
+        # Test case 3: Width = 10, Height = 10
+        rectangle1 = Rectangle(10, 10)
+        self.assertEqual(rectangle1.area(), 100)
+
+    def setUp(self):
+        '''custom method to redirect stdout to a StingIO object to
+        capture printed output'''
+        self.output = StringIO()
+        sys.stdout = self.output
+
+    def tearDown(self):
+        '''restore standard output'''
+        sys.stdout = sys.__stdout__
+
+    def test_display(self):
+        '''create Rectangle instances with varying width/height and 
+        compare output to expected result'''
+        # Test case 1: Width = 4, Height = 5
+        rectangle1 = Rectangle(4, 5)
+        rectangle1.display()
+        self.assertEqual(self.output.getvalue(), "####\n####\n####\n####\n####\n")
+
+        # Test case 2: Width = 7, Height = 3
+        rectangle2 = Rectangle(7, 3)
+        rectangle2.display()
+        self.assertEqual(self.output.getvalue(), "#######\n#######\n#######\n")
+
+        # Test case 3: Width = 2, Height = 2
+        rectangle3 = Rectangle(2, 2)
+        rectangle3.display()
+        self.assertEqual(self.output.getvalue(), "##\n##\n")
 
 if __name__ == '__main__':
     unittest.main()

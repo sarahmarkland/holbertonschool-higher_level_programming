@@ -1,7 +1,9 @@
+'''test_base module'''
 import unittest
 from models.base import Base
 
 class TestBase(unittest.TestCase):
+    '''TestBase class docstring'''
     def test_id_assignment(self):
         '''test the automatic assignment of incremental ids, and the
         assignment of specific id when provided'''
