@@ -102,5 +102,26 @@ class TestRectangle(unittest.TestCase):
         rectangle3.display()
         self.assertEqual(self.output.getvalue(), "##\n##\n")
 
+    def test_str1(self):
+        '''compare the output of str(rectangle) with the expected output'''
+        # Test case 1
+        rectangle1 = Rectangle(4, 5, 2, 3, 1)
+        expected_output1 = "[Rectangle] (1) 2/3 - 4/5"
+        self.assertEqual(str(rectangle1), expected_output1)
+
+    def test_str2(self):
+        '''compare the output of str(rectangle) with the expected output'''
+        # Test case 2
+        rectangle2 = Rectangle(7, 3, 1, 2, 2)
+        expected_output2 = "[Rectangle] (2) 1/2 - 7/3"
+        self.assertEqual(str(rectangle2), expected_output2)
+
+    def test_str3(self):
+        '''compare the output of str(rectangle) with the expected output'''
+        # Test case 3
+        rectangle3 = Rectangle(2, 2, 0, 0, 3)
+        expected_output3 = "[Rectangle] (3) 0/0 - 2/2"
+        self.assertEqual(str(rectangle3), expected_output3)
+
 if __name__ == '__main__':
     unittest.main()

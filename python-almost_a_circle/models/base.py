@@ -8,16 +8,12 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """if a number is passed in as argument i.e. <Base(12)>, assign
+        that number as the public instance attribute id. Else, increment
+        __nb_objects and assign the new value to the public instance
+        attribute id"""
         if id is not None:
-            """
-            if a number is passed in as argument i.e. <Base(12)>
-            assign that number as the public instance attribute id
-            """
             self.id = id
         else:
-            """
-            Increment __nb_objects and assign the new value to the public
-            instance attribute id
-            """
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
