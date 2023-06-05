@@ -36,6 +36,9 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError):
             Rectangle(10, -5, 5, 5)
 
+        with self.assertRaises(ValueError):
+            Rectangle(1, 0)
+
     def test_invalid_x(self):
         '''test invalid x values (non-int & value <= 0)'''
 
