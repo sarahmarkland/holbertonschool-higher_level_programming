@@ -23,7 +23,7 @@ class TestRectangle(unittest.TestCase):
             Rectangle(0, 20, 5, 5)
 
         with self.assertRaises(ValueError):
-            Rectangle(10, -20, 5, 5)
+            Rectangle(-10, 20, 5, 5)
 
     def test_invalid_height(self):
         '''test invalid height values (non-int & value <= 0)'''
