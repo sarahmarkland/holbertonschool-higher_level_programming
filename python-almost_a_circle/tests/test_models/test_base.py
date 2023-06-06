@@ -21,7 +21,7 @@ class TestBase(unittest.TestCase):
         base = Base(10)
         self.assertIsInstance(base.id, int)
 
-        def test_to_json_empty(self):
+    def test_to_json_empty(self):
             '''test to_json_string with empty list'''
             self.assertEqual(Base.to_json_string([]), "[]")
 
