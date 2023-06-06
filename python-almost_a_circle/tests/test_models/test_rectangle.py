@@ -84,6 +84,13 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = sys.__stdout__
 
     def test_display(self):
+        '''test display() method'''
+        self.rectangle = Rectangle(4, 5)
+        self.rectangle.display()
+        self.assertEqual(self.output.getvalue(),
+                                    "####\n####\n####\n####\n####\n")
+
+    def test_display1(self):
         # Test case 1: Width = 4, Height = 5
         rectangle1 = Rectangle(4, 5)
         rectangle1.display()
@@ -100,6 +107,8 @@ class TestRectangle(unittest.TestCase):
         rectangle3 = Rectangle(2, 2)
         rectangle3.display()
         self.assertEqual(self.output.getvalue(), "##\n##\n")
+
+    
 
     def test_str1(self):
         '''compare the output of str(rectangle) with the expected output'''
