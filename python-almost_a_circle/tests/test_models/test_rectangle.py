@@ -154,7 +154,89 @@ class TestRectangle(unittest.TestCase):
         '''test update() method with *args'''
         # Test case 1
         rectangle1 = Rectangle(10, 10, 10, 10)
-        
+        rectangle1.update(89)
+        self.assertEqual(str(rectangle1), "[Rectangle] (89) 10/10 - 10/10")
+
+        # Test case 2
+        rectangle2 = Rectangle(10, 10, 10, 10)
+        rectangle2.update(89, 2)
+        self.assertEqual(str(rectangle2), "[Rectangle] (89) 10/10 - 2/10")
+
+        # Test case 3
+        rectangle3 = Rectangle(10, 10, 10, 10)
+        rectangle3.update(89, 2, 3)
+        self.assertEqual(str(rectangle3), "[Rectangle] (89) 10/10 - 2/3")
+
+        # Test case 4
+        rectangle4 = Rectangle(10, 10, 10, 10)
+        rectangle4.update(89, 2, 3, 4)
+        self.assertEqual(str(rectangle4), "[Rectangle] (89) 4/10 - 2/3")
+
+        # Test case 5
+        rectangle5 = Rectangle(10, 10, 10, 10)
+        rectangle5.update(89, 2, 3, 4, 5)
+        self.assertEqual(str(rectangle5), "[Rectangle] (89) 4/5 - 2/3")
+
+    def test_update_kwargs(self):
+        '''test update() method with **kwargs'''
+        # Test case 1
+        rectangle1 = Rectangle(10, 10, 10, 10)
+        rectangle1.update(height=1)
+        self.assertEqual(str(rectangle1), "[Rectangle] (1) 10/10 - 10/1")
+
+        # Test case 2
+        rectangle2 = Rectangle(10, 10, 10, 10)
+        rectangle2.update(width=1, x=2)
+        self.assertEqual(str(rectangle2), "[Rectangle] (2) 2/10 - 1/10")
+
+        # Test case 3
+        rectangle3 = Rectangle(10, 10, 10, 10)
+        rectangle3.update(y=1, width=2, x=3, id=89)
+        self.assertEqual(str(rectangle3), "[Rectangle] (89) 3/1 - 2/10")
+
+        # Test case 4
+        rectangle4 = Rectangle(10, 10, 10, 10)
+        rectangle4.update(x=1, height=2, y=3, width=4)
+        self.assertEqual(str(rectangle4), "[Rectangle] (1) 1/3 - 4/2")
+
+        # Test case 5
+        rectangle5 = Rectangle(10, 10, 10, 10)
+        rectangle5.update(89, 2, 3, 4, 5, id=98)
+        self.assertEqual(str(rectangle5), "[Rectangle] (89) 4/5 - 2/3")
+
+    def test_update_args_kwargs(self):
+        '''test update() method with *args and **kwargs'''
+        # Test case 1
+        rectangle1 = Rectangle(10, 10, 10, 10)
+        rectangle1.update(89, 2, 3, 4, x=1, height=2, y=3, width=4)
+        self.assertEqual(str(rectangle1), "[Rectangle] (89) 4/10 - 2/3")
+
+        # Test case 2
+        rectangle2 = Rectangle(10, 10, 10, 10)
+        rectangle2.update(89, x=1, height=2, y=3, width=4)
+        self.assertEqual(str(rectangle2), "[Rectangle] (89) 10/10 - 10/10")
+
+        # Test case 3
+        rectangle3 = Rectangle(10, 10, 10, 10)
+        rectangle3.update(x=1, height=2, y=3, width=4, id=89)
+        self.assertEqual(str(rectangle3), "[Rectangle] (89) 10/10 - 4/2")
+
+        # Test case 4
+        rectangle4 = Rectangle(10, 10, 10, 10)
+        rectangle4.update(89, 2, 3, 4, id=98, x=1, height=2, y=3, width=4)
+        self.assertEqual(str(rectangle4), "[Rectangle] (89) 4/10 - 2/3")
+
+    def test_save_to_file(self):
+        '''test save_to_file() method'''
+        # Test case 1
+        rectangle1 = Rectangle(10, 7, 2, 8)
+        rectangle2 = Rectangle(2, 4)
+        Rectangle.save_to_file([rectangle1, rectangle2])
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(
+                [rectangle1.to_dictionary(), rectangle2.to_dictionary()],
+                Base.from_json_string(f.read())
+            )
 
 if __name__ == '__main__':
     unittest.main()
