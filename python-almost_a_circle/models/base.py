@@ -58,7 +58,7 @@ class Base:
         '''return a list of instances'''
         filename = cls.__name__ + ".json"
         try:
-            with open(filename, "r") as f:
+            with open(filename, "r", encoding='utf-8') as f:
                 list_dicts = cls.from_json_string(f.read())
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
