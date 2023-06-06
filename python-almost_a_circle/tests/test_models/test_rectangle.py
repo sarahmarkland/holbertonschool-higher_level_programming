@@ -9,28 +9,6 @@ from models.rectangle import Rectangle
 
 class TestRectangle(unittest.TestCase):
     '''class docstring for TestRectangle'''
-    def setUp(self):
-        '''custom method to redirect stdout to a StingIO object to
-        capture printed output'''
-        self.output = StringIO()
-        sys.stdout = self. output
-
-        self.rectangletest = Rectangle(1, 1)
-
-        # reset __nb_objects to 0 before each test
-        Base._Base__nb_objects = 0
-        # print(f"Base.__nb_objects after reset: {Base._Base__nb_objects}")
-
-    def tearDown(self):
-        '''restore standard output'''
-        sys.stdout = sys.__stdout__
-
-        del self.rectangletest
-        try:
-            os.remove("Rectangle.json")
-        except FileNotFoundError:
-            pass
-
     def test_valid_attributes(self):
         '''test valid attribute values'''
         rectangle = Rectangle(10, 20, 5, 5)
@@ -95,6 +73,33 @@ class TestRectangle(unittest.TestCase):
         # Test case 3: Width = 10, Height = 10
         rectangle1 = Rectangle(10, 10)
         self.assertEqual(rectangle1.area(), 100)
+
+    def setUp(self):
+        '''redirect stdout to check output from display()'''
+        self.output = StringIO()
+        sys.stdout = self.output
+
+    def tearDown(self):
+        '''clean up after test_display() to restore stdout'''
+        sys.stdout = sys.__stdout__
+
+    def test_display(self):
+        # Test case 1: Width = 4, Height = 5
+        rectangle1 = Rectangle(4, 5)
+        rectangle1.display()
+        self.assertEqual(self.output.getvalue(), "####\n####\n####\n####\n####\n")
+
+    def test_display2(self):
+        # Test case 2: Width = 7, Height = 3
+        rectangle2 = Rectangle(7, 3)
+        rectangle2.display()
+        self.assertEqual(self.output.getvalue(), "#######\n#######\n#######\n")
+
+    def test_display3(self):
+        # Test case 3: Width = 2, Height = 2
+        rectangle3 = Rectangle(2, 2)
+        rectangle3.display()
+        self.assertEqual(self.output.getvalue(), "##\n##\n")
 
     def test_str1(self):
         '''compare the output of str(rectangle) with the expected output'''
