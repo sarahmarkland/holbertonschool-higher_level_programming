@@ -25,6 +25,28 @@ class TestBase(unittest.TestCase):
             '''test to_json_string with empty list'''
             self.assertEqual(Base.to_json_string([]), "[]")
 
+    def test_to_json_None(self):
+        '''test to_json_string with None'''
+        self.assertEqual(Base.to_json_string(None), "[]")
+
+    def test_from_json_string_empty(self):
+        '''test from_json_string with empty string'''
+        self.assertEqual(Base.from_json_string(""), [])
+
+    def test_from_json_string_None(self):
+        '''test from_json_string with None'''
+        self.assertEqual(Base.from_json_string(None), [])
+
+    def test_from_json_string_valid(self):
+        '''test from_json_string with valid JSON string'''
+        list_input = [
+            {'id': 89, 'width': 10, 'height': 4},
+            {'id': 7, 'width': 1, 'height': 7}
+        ]
+        json_list_input = Base.to_json_string(list_input)
+        list_output = Base.from_json_string(json_list_input)
+        self.assertEqual(list_output, list_input)
+
     def test_id_assignment_with_string(self):
         '''test the assignment of id attribute with a string'''
         base = Base("string")
