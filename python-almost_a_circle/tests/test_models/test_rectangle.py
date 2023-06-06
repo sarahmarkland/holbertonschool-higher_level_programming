@@ -133,5 +133,28 @@ class TestRectangle(unittest.TestCase):
         expected_output3 = "[Rectangle] (3) 0/0 - 2/2"
         self.assertEqual(str(rectangle3), expected_output3)
 
+    def test_to_dictionary(self):
+        '''test to_dictionary() method'''
+        # Test case 1
+        rectangle1 = Rectangle(10, 2, 1, 9)
+        expected_output1 = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertEqual(rectangle1.to_dictionary(), expected_output1)
+
+        # Test case 2
+        rectangle2 = Rectangle(1, 1)
+        expected_output2 = {'x': 0, 'y': 0, 'id': 2, 'height': 1, 'width': 1}
+        self.assertEqual(rectangle2.to_dictionary(), expected_output2)
+
+        # Test case 3
+        rectangle3 = Rectangle(10, 2, 0, 0, 12)
+        expected_output3 = {'x': 0, 'y': 0, 'id': 12, 'height': 2, 'width': 10}
+        self.assertEqual(rectangle3.to_dictionary(), expected_output3)
+
+    def test_update_args(self):
+        '''test update() method with *args'''
+        # Test case 1
+        rectangle1 = Rectangle(10, 10, 10, 10)
+        
+
 if __name__ == '__main__':
     unittest.main()
