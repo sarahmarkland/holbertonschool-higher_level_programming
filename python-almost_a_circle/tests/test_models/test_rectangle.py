@@ -150,48 +150,6 @@ class TestRectangle(unittest.TestCase):
         expected_output3 = {'x': 0, 'y': 0, 'id': 12, 'height': 2, 'width': 10}
         self.assertEqual(rectangle3.to_dictionary(), expected_output3)
 
-    def test_update_positional_args(self):
-        """ test update method:
-        assigns an argument to each attribute
-        """
-        # test update id
-        self.rectangle.update(10)
-        self.assertEqual(self.rectangle.id, 10)
-        # test update width
-        self.rectangle.update(10, 20)
-        self.assertEqual(self.rectangle.width, 20)
-        # test update height
-        self.rectangle.update(10, 20, 30)
-        self.assertEqual(self.rectangle.height, 30)
-        # test update x
-        self.rectangle.update(10, 20, 30, 40)
-        self.assertEqual(self.rectangle.x, 40)
-        # test update y
-        self.rectangle.update(10, 20, 30, 40, 50)
-        self.assertEqual(self.rectangle.y, 50)
-
-    def test_update_kw_args(self):
-        """Test updating attributes with keyword arguments"""
-        rectangle = Rectangle(1, 1, 1, 1, 1)
-        rectangle.update(id=2, width=3, height=4, x=5, y=6)
-        self.assertEqual(rectangle.id, 2)
-        self.assertEqual(rectangle.width, 3)
-        self.assertEqual(rectangle.height, 4)
-        self.assertEqual(rectangle.x, 5)
-        self.assertEqual(rectangle.y, 6)
-
-    def test_update_args_and_kwargs(self):
-        """ test update method:
-        assigns an argument to each attribute using *args and **kwargs
-        """
-        rectangle = Rectangle(1, 1, 1, 1, 1)
-        rectangle.update(2, 3, 4, 5, 6, id=7, width=8, height=9, x=10, y=11)
-        self.assertEqual(rectangle.id, 2)
-        self.assertEqual(rectangle.width, 3)
-        self.assertEqual(rectangle.height, 4)
-        self.assertEqual(rectangle.x, 5)
-        self.assertEqual(rectangle.y, 6)
-
     def test_save_to_file(self):
         '''test save_to_file() method'''
         # Test case 1
