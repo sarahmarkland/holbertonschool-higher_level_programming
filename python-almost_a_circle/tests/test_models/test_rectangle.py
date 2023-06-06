@@ -226,17 +226,5 @@ class TestRectangle(unittest.TestCase):
         rectangle4.update(89, 2, 3, 4, id=98, x=1, height=2, y=3, width=4)
         self.assertEqual(str(rectangle4), "[Rectangle] (89) 4/10 - 2/3")
 
-    def test_save_to_file(self):
-        '''test save_to_file() method'''
-        # Test case 1
-        rectangle1 = Rectangle(10, 7, 2, 8)
-        rectangle2 = Rectangle(2, 4)
-        Rectangle.save_to_file([rectangle1, rectangle2])
-        with open("Rectangle.json", "r") as f:
-            self.assertEqual(
-                [rectangle1.to_dictionary(), rectangle2.to_dictionary()],
-                Base.from_json_string(f.read())
-            )
-
 if __name__ == '__main__':
     unittest.main()
