@@ -2,10 +2,12 @@
 import unittest
 import os
 import sys
+import json
 from io import StringIO
 from unittest.mock import patch
 from models.base import Base
 from models.rectangle import Rectangle
+from unittest.mock import patch, MagicMock
 
 class TestRectangle(unittest.TestCase):
     '''class docstring for TestRectangle'''
@@ -203,6 +205,29 @@ class TestRectangle(unittest.TestCase):
                 [rectangle1.to_dictionary(), rectangle2.to_dictionary()],
                 Base.from_json_string(f.read())
             )
+
+    def test_create(self):
+        r1 = Rectangle.create(**{'id': 89})
+
+        self.assertEqual(r1.id, 89)
+
+    def test_save_to_file_with_none(self):
+        # Patch the open function to capture the file output
+        with patch('builtins.open', create=True) as mock_open:
+            # Call the save_to_file method with None
+            Rectangle.save_to_file(None)
+
+            # Assert that open was called with the correct filename
+            mock_open.assert_called_once_with('Rectangle.json', 'w')
+
+            # Retrieve the write call arguments
+            write_args = mock_open.return_value.__enter__.return_value.write.call_args[0]
+
+            # Convert the JSON string to a dictionary
+            saved_data = json.loads(write_args[0])
+
+            # Assert that the saved data is an empty list
+            self.assertEqual(saved_data, [])
 
 if __name__ == '__main__':
     unittest.main()
