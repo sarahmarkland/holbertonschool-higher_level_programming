@@ -21,6 +21,10 @@ class TestBase(unittest.TestCase):
         base = Base(10)
         self.assertIsInstance(base.id, int)
 
+        def test_to_json_empty(self):
+            '''test to_json_string with empty list'''
+            self.assertEqual(Base.to_json_string([]), "[]")
+
     def test_id_assignment_with_string(self):
         '''test the assignment of id attribute with a string'''
         base = Base("string")
