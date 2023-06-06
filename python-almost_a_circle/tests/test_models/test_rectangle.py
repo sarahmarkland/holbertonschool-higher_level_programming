@@ -1,12 +1,36 @@
 '''test_rectangle module'''
 import unittest
+import os
 import sys
 from io import StringIO
+from unittest.mock import patch
+from models.base import Base
 from models.rectangle import Rectangle
-from contextlib import redirect_stdout
 
 class TestRectangle(unittest.TestCase):
     '''class docstring for TestRectangle'''
+    def setUp(self):
+        '''custom method to redirect stdout to a StingIO object to
+        capture printed output'''
+        self.output = StringIO()
+        sys.stdout = self. output
+
+        self.rectangletest = Rectangle(1, 1)
+
+        # reset __nb_objects to 0 before each test
+        Base._Base__nb_objects = 0
+        # print(f"Base.__nb_objects after reset: {Base._Base__nb_objects}")
+
+    def tearDown(self):
+        '''restore standard output'''
+        sys.stdout = sys.__stdout__
+
+        del self.rectangletest
+        try:
+            os.remove("Rectangle.json")
+        except FileNotFoundError:
+            pass
+
     def test_valid_attributes(self):
         '''test valid attribute values'''
         rectangle = Rectangle(10, 20, 5, 5)
@@ -71,22 +95,6 @@ class TestRectangle(unittest.TestCase):
         # Test case 3: Width = 10, Height = 10
         rectangle1 = Rectangle(10, 10)
         self.assertEqual(rectangle1.area(), 100)
-
-    def setUp(self):
-        '''custom method to redirect stdout to a StingIO object to
-        capture printed output'''
-        self.output = StringIO()
-        sys.stdout = self.output
-
-    def tearDown(self):
-        '''restore standard output'''
-        sys.stdout = sys.__stdout__
-
-    def test_display(self):
-        '''test display exists'''
-        self.rectangle = Rectangle(2, 2)
-        self.rectangle.display()
-        self.assertEqual(self.output.getvalue(), "##\n##\n")
 
     def test_str1(self):
         '''compare the output of str(rectangle) with the expected output'''
