@@ -9,6 +9,25 @@ from models.rectangle import Rectangle
 
 class TestRectangle(unittest.TestCase):
     '''class docstring for TestRectangle'''
+    def setUp(self):
+        '''redirect stdout to check output from display()'''
+        self.output = StringIO()
+        sys.stdout = self.output
+
+        self.rectangle = Rectangle(4, 5)
+
+        # reset nb_objects to 0 before each test
+        Base._Base__nb_objects = 0
+
+    def tearDown(self):
+        '''clean up after test_display() to restore stdout'''
+        sys.stdout = sys.__stdout__
+
+        del self.rectangle
+        try:
+            os.remove("Rectangle.json")
+        except FileNotFoundError:
+            pass
     def test_valid_attributes(self):
         '''test valid attribute values'''
         rectangle = Rectangle(10, 20, 5, 5)
@@ -73,15 +92,6 @@ class TestRectangle(unittest.TestCase):
         # Test case 3: Width = 10, Height = 10
         rectangle1 = Rectangle(10, 10)
         self.assertEqual(rectangle1.area(), 100)
-
-    def setUp(self):
-        '''redirect stdout to check output from display()'''
-        self.output = StringIO()
-        sys.stdout = self.output
-
-    def tearDown(self):
-        '''clean up after test_display() to restore stdout'''
-        sys.stdout = sys.__stdout__
 
     def test_display(self):
         '''test display() method'''
