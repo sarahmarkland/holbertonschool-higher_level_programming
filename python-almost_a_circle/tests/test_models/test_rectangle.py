@@ -100,12 +100,6 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.output.getvalue(),
                                     "####\n####\n####\n####\n####\n")
 
-    def test_display1(self):
-        # Test case 1: Width = 4, Height = 5
-        rectangle1 = Rectangle(4, 5)
-        rectangle1.display()
-        self.assertEqual(self.output.getvalue(), "####\n####\n####\n####\n####\n")
-
     def test_display_with_x(self):
         # Test display with x
         self.rectangle = Rectangle(2, 2, 2)
