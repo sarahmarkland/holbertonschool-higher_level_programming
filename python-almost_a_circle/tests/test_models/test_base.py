@@ -1,7 +1,6 @@
 '''test_base module'''
 import unittest
 from unittest.mock import patch
-from io import StringIO
 from models.base import Base
 
 class TestBase(unittest.TestCase):
@@ -26,6 +25,6 @@ class TestBase(unittest.TestCase):
         '''test the assignment of id attribute with a string'''
         base = Base("string")
         self.assertEqual(base.id, "string")
-        
+
 if __name__ == '__main__':
     unittest.main()
