@@ -3,6 +3,7 @@ import unittest
 import sys
 from io import StringIO
 from models.rectangle import Rectangle
+from contextlib import redirect_stdout
 
 class TestRectangle(unittest.TestCase):
     '''class docstring for TestRectangle'''
@@ -104,6 +105,24 @@ class TestRectangle(unittest.TestCase):
         rectangle3 = Rectangle(2, 2)
         rectangle3.display()
         self.assertEqual(self.output.getvalue(), "##\n##\n")
+
+    def test_display_without_x_and_y(self):
+        '''tests what it says'''
+        # Test case
+        rectangletest = Rectangle(3, 4, id=1)
+        expected_output = "###\n###\n###\n###\n"
+    
+        # Redirect stdout to capture the output
+        with StringIO() as buffer, redirect_stdout(buffer):
+            rectangletest.display()
+            output = buffer.getvalue()
+    
+        self.assertEqual(output, expected_output)
+
+    def test_display_exists(self):
+        rectangle = Rectangle(2, 3, id=1)
+        self.assertTrue(hasattr(rectangle, "display"))
+        self.assertTrue(callable(getattr(rectangle, "display")))
 
     def test_str1(self):
         '''compare the output of str(rectangle) with the expected output'''
