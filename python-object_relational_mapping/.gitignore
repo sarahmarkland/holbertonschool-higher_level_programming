@@ -52,4 +52,5 @@ Mkfile.old
 dkms.conf
 
 # holbertonschool-higher_level_programming
-deploy.sh
+*.sh
+__pycache__/
