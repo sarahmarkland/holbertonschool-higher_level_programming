@@ -3,10 +3,10 @@
 
 
 import MySQLdb
-from sys import argv
+import sys
 
 
-def listStates():
+def listNStates():
     """ list all states from database """
     db = MySQLdb.connect(host="localhost", port=3306,
                          user=argv[1], passwd=argv[2],
@@ -18,3 +18,7 @@ def listStates():
         print(state)
     cur.close()
     db.close()
+
+
+if __name__ == "__main__":
+    listNStates()
