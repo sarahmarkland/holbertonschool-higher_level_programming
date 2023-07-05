@@ -15,7 +15,7 @@ def filterStates():
 
     cur = db.cursor()
 
-    cur.execute("SELECT * FROM states WHERE BINARY name LIKE '{}' ORDER BY id"\
+    cur.execute("SELECT * FROM states WHERE BINARY name LIKE '{}' ORDER BY id"
                 .format(argv[4]))
     states = cur.fetchall()
     for state in states:
