@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Lists all states with a name starting with N (upper N) from the database 
+Lists all states with a name starting with N (upper N) from the database
 hbtn_0e_0_usa
 """
 import MySQLdb
@@ -19,7 +19,6 @@ def listNStates():
     states = cur.fetchall()
     for state in states:
         print(state)
-        
     cur.close()
     db.close()
 
