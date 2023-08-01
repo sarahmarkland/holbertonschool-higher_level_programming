@@ -6,6 +6,10 @@
 
 ### Why JavaScript programming is amazing
 ### How to run a JavaScript script
+    Node.js: If you are working on server-side JavaScript or need to run JavaScript code outside of the browser, you can use Node.js, which is a JavaScript runtime built on Chrome's V8 JavaScript engine. First, ensure you have Node.js installed on your system. Then, create a .js file with your JavaScript code and run it using the Node.js command in your terminal or command prompt. For example:
+
+    Create a file named app.js:
+        console.log("Hello, World!");
 ### How to create variables and constants
 ### What are differences between var, const and let
 ### What are all the data types available in JavaScript
