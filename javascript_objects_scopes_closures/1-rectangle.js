@@ -4,9 +4,9 @@
 // initialize instance attribute width and height
 
 class Rectangle {
-    constructor (w, h) {
-        this.width = w;
-        this.height = h;
-    }
-    }
-    module.exports = Rectangle;
+  constructor (w, h) {
+    this.width = w;
+    this.height = h;
+  }
+}
+module.exports = Rectangle;
