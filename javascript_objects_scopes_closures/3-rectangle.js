@@ -2,14 +2,15 @@
 // Rectangle class with constructor and print method
 class Rectangle {
   constructor (w, h) {
-    if (w > 0 && h > 0) {
+    if (w >= 1 && h >= 1 && w !== undefined && h !== undefined) {
       this.width = w;
       this.height = h;
-      this.print = function () {
-        for (let i = 0; i < h; i++) {
-          console.log('X'.repeat(w));
-        }
-      };
+    }
+  }
+
+  print () {
+    for (let i = 0; i < this.height; i++) {
+      console.log('X'.repeat(this.width));
     }
   }
 }
