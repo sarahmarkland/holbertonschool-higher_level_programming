@@ -23,10 +23,10 @@ class Rectangle {
     let i = 0;
     let j = 0;
     let string = '';
-    for (i = 0; i < this.height; i++) {
+    for (; i < this.height; i++) {
       string += 'X';
     }
-    for (j = 0; j < this.width; j++) {
+    for (; j < this.width; j++) {
       console.log(string);
     }
   }
