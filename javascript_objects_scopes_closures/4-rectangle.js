@@ -2,7 +2,7 @@
 // Write a class Rectangle that defines a rectangle:
 // You must use the class notation for defining your class
 // The constructor must take 2 arguments w and h
-// If w or h is equal to 0 or not a positive integer, create an empty 
+// If w or h is equal to 0 or not a positive integer, create an empty
 // object
 // Create an instance method called print() that prints the rectangle
 // using the character X
@@ -12,29 +12,32 @@
 // and the height of the rectangle by 2
 
 class Rectangle {
-    constructor (w, h) {
-        if (w <= 0 || h <= 0 || w === undefined || h === undefined) {
-        } else {
-        this.width = w;
-        this.height = h;
-        }
+  constructor (w, h) {
+    if (w >= 1 && h >= 1) {
+      this.width = w;
+      this.height = h;
     }
-    
-    print () {
-        const row = 'X'.repeat(this.width);
-        for (let i = 0; i < this.height; i++) {
-        console.log(row);
-        }
+  }
+
+  print () {
+    let i = 0;
+    let j = 0;
+    let string = '';
+    for (i = 0; i < this.height; i++) {
+      string += 'X';
     }
-    
-    rotate () {
-        const temp = this.width;
-        this.width = this.height;
-        this.height = temp;
+    for (j = 0; j < this.width; j++) {
+      console.log(string);
     }
-    
-    double () {
-        this.width *= 2;
-        this.height *= 2;
-    }
-    }
+  }
+
+  rotate () {
+    [this.width, this.height] = [this.height, this.width];
+  }
+
+  double () {
+    this.width *= 2;
+    this.height *= 2;
+  }
+}
+module.exports = Rectangle;
